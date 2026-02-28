@@ -29,7 +29,10 @@ import {
   XCircle,
   Star,
   DollarSign,
+<<<<<<< HEAD
   IdCard,
+=======
+>>>>>>> 2ebbd2bcaa792b32929f85fec6b7c0c04ab6786b
 } from "lucide-react"
 import {
   BarChart,
@@ -124,6 +127,7 @@ function GuideRow({
           <p className="text-xs text-muted-foreground">
             {guide.speciality} - {guide.email}
           </p>
+<<<<<<< HEAD
           {(guide.documents as { nameOnCni?: string })?.nameOnCni && (
             <p className="mt-0.5 text-[11px] text-muted-foreground">
               Nom sur CNI : {((guide.documents as { nameOnCni: string }).nameOnCni)}
@@ -157,6 +161,8 @@ function GuideRow({
               ) : null}
             </p>
           )}
+=======
+>>>>>>> 2ebbd2bcaa792b32929f85fec6b7c0c04ab6786b
         </div>
       </div>
       <div className="flex items-center gap-3">
@@ -165,11 +171,15 @@ function GuideRow({
           {guide.rating}
         </div>
         <div className="text-sm text-muted-foreground">{guide.totalTours} visites</div>
+<<<<<<< HEAD
         {guide.status === "pending_cni" ? (
           <Badge variant="outline" className="border-amber-300 bg-amber-50 text-amber-700">
             En attente de CNI
           </Badge>
         ) : guide.status === "pending" ? (
+=======
+        {guide.status === "pending" ? (
+>>>>>>> 2ebbd2bcaa792b32929f85fec6b7c0c04ab6786b
           <div className="flex gap-2">
             <Button
               size="sm"
@@ -221,6 +231,7 @@ const COLORS = [
 ]
 
 export default function AdminPage() {
+<<<<<<< HEAD
   const { data: stats, isLoading: statsLoading } = useSWR<DashboardStats>("/api/admin/stats", fetcher, {
     refreshInterval: 10000,
     revalidateOnFocus: true,
@@ -233,6 +244,11 @@ export default function AdminPage() {
     refreshInterval: 10000,
     revalidateOnFocus: true,
   })
+=======
+  const { data: stats, isLoading: statsLoading } = useSWR<DashboardStats>("/api/admin/stats", fetcher)
+  const { data: guidesData, mutate: mutateGuides } = useSWR<Guide[]>("/api/admin/guides", fetcher)
+  const { data: sitesData } = useSWR<(CulturalSite & { published: boolean })[]>("/api/admin/sites", fetcher)
+>>>>>>> 2ebbd2bcaa792b32929f85fec6b7c0c04ab6786b
 
   const [localGuides, setLocalGuides] = useState<Guide[] | null>(null)
   const guides = localGuides ?? guidesData ?? []
@@ -275,7 +291,11 @@ export default function AdminPage() {
             <div className="skeleton-shimmer h-8 w-48" />
             <div className="skeleton-shimmer mt-3 h-5 w-80" />
           </div>
+<<<<<<< HEAD
           <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+=======
+          <div className="mb-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+>>>>>>> 2ebbd2bcaa792b32929f85fec6b7c0c04ab6786b
             {Array.from({ length: 8 }).map((_, i) => (
               <StatCardSkeleton key={i} />
             ))}
@@ -307,20 +327,32 @@ export default function AdminPage() {
       <Navbar />
       <main className="mx-auto max-w-7xl px-4 py-8 lg:px-8">
         <div className="mb-8">
+<<<<<<< HEAD
           <h1 className="text-2xl font-bold text-foreground sm:text-3xl">Administration</h1>
+=======
+          <h1 className="text-3xl font-bold text-foreground">Administration</h1>
+>>>>>>> 2ebbd2bcaa792b32929f85fec6b7c0c04ab6786b
           <p className="mt-2 text-muted-foreground">
             {"Tableau de bord analytique et gestion de la plateforme"}
           </p>
         </div>
 
+<<<<<<< HEAD
         <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+=======
+        <div className="mb-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+>>>>>>> 2ebbd2bcaa792b32929f85fec6b7c0c04ab6786b
           <StatCard icon={Users} label="Visiteurs Totaux" value={s.totalVisitors.toLocaleString("fr-FR")} numericValue={s.totalVisitors} trend={s.monthlyGrowth} />
           <StatCard icon={DollarSign} label="Revenus (FCFA)" value={s.totalRevenue.toLocaleString("fr-FR")} numericValue={s.totalRevenue} />
           <StatCard icon={Ticket} label="Billets Vendus" value={s.totalTicketsSold.toLocaleString("fr-FR")} numericValue={s.totalTicketsSold} />
           <StatCard icon={Shield} label="Fraudes Bloquees" value={s.fraudsPrevented.toString()} numericValue={s.fraudsPrevented} />
         </div>
 
+<<<<<<< HEAD
         <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+=======
+        <div className="mb-8 grid grid-cols-2 gap-4 lg:grid-cols-4">
+>>>>>>> 2ebbd2bcaa792b32929f85fec6b7c0c04ab6786b
           <StatCard icon={Award} label="Guides Actifs" value={s.activeGuides.toString()} numericValue={s.activeGuides} />
           <StatCard icon={Map} label="Sites Culturels" value={s.sitesCount.toString()} numericValue={s.sitesCount} />
           <StatCard icon={TrendingUp} label="Croissance Mensuelle" value={s.monthlyGrowth.toString()} numericValue={s.monthlyGrowth} suffix="%" />
@@ -328,7 +360,11 @@ export default function AdminPage() {
         </div>
 
         <Tabs defaultValue="analytics">
+<<<<<<< HEAD
           <TabsList className="mb-6 flex w-full overflow-x-auto sm:w-fit">
+=======
+          <TabsList className="mb-6">
+>>>>>>> 2ebbd2bcaa792b32929f85fec6b7c0c04ab6786b
             <TabsTrigger value="analytics">Analytique</TabsTrigger>
             <TabsTrigger value="guides">
               Guides
